@@ -10,7 +10,7 @@ header
 {
     width: 100%;
     height: 100vh;
-    background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.1)), url(taj.jpg);
+    background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.1)), url(/Taj/taj.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
