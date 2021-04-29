@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,68 +10,8 @@ session_start();
 </head>
 <body>
 
-<?php 
 
-include 'dbcon.php';
-
-if(isset($_POST['submit'])){
-    $username=mysqli_real_escape_string($con, $_POST['username']) ;
-    $email=mysqli_real_escape_string($con, $_POST['email']) ;
-    $mobile=mysqli_real_escape_string($con, $_POST['mobile']) ;
-    $password=mysqli_real_escape_string($con, $_POST['password']) ;
-    $cpassword=mysqli_real_escape_string($con, $_POST['cpassword']) ;
-
-    $pass=password_hash($password, PASSWORD_BCRYPT);
-    $cpass=password_hash($cpassword, PASSWORD_BCRYPT);
-
-    $emailquery=" select * from `mahal` where email='$email' ";
-    $query=mysqli_query($con, $emailquery);
-
-    $emailcount=mysqli_num_rows($query);
-
-    if($emailcount>0){
-                      ?>
-                            <script>
-                               alert(" Email already exists.Try an another one.. ");
-                            </script>
-                       <?php 
-    }else{
-        if($password === $cpassword){
-
-            
-            $newquery="INSERT INTO `taj`.`mahal` ( `username`, `email`, `phone number`, `password`, `cpassword`) VALUES ( '$username', '$email', '$mobile', '$pass', '$cpass')"; 
-
-            $iquery=mysqli_query($con, $newquery);
-
-            if($iquery){
-                       ?>
-                            <script>
-                               alert("Inserted Successful");
-                            </script>
-                        <?php
-                    }else{
-                       
-                       ?>
-                            <script>
-                               alert(" No Connection ");
-                            </script>
-                       <?php 
-                    }
-
-        }else{
-            ?>
-                <script>
-                    alert(" Password entered do not match. Do check and rewrite them again.. ");
-                </script>
-            <?php 
-        }
-    }
-
-}
-
-?>
-
-    <div)  class="card bg-light">
+    <div class="card bg-light">
     <article class="card-body mx-auto" style="max-width: 400px;">
      <h4 class="card-title-mt-3-text-center">Create Account</h4>
      <p class="text-center">Get started with your free account</p>
@@ -124,7 +61,7 @@ if(isset($_POST['submit'])){
             <div class="form-group">
                <button type="submit" name="submit" class="btn btn-primary btn-block"> Create Account </button>
                </div>
-               <p class="text-center">Have an account? <a href="login.php">Log In</a></p>
+               <p class="text-center">Have an account? <a href="taj/taj.html">Log In</a></p>
             </form>
         </article>
         </div>
